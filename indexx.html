@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landmark Chat Widget - Integration Examples</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .example {
+        background: white;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .example h3 {
+        color: #6366f1;
+        border-bottom: 2px solid #6366f1;
+        padding-bottom: 10px;
+      }
+      pre {
+        background: #1f2937;
+        color: #f9fafb;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .demo-content {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+        padding: 40px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🚀 Landmark Chat Widget - Integration Guide</h1>
+
+    <div class="demo-content">
+      <h2>This page demonstrates the chat widget!</h2>
+      <p>Look for the floating chat button in the bottom-right corner.</p>
+      <p>The widget is embedded using just one script tag!</p>
+    </div>
+
+    <div class="example">
+      <h3>🎯 Method 1: Simple Embed (Easiest)</h3>
+      <p>Add this single line to any website:</p>
+      <pre><code>&lt;script src="https://your-cdn.com/landmark-chat-widget.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>⚙️ Method 2: With Configuration</h3>
+      <p>Configure the widget using data attributes:</p>
+      <pre><code>&lt;script 
+  src="https://your-cdn.com/landmark-chat-widget.js"
+  data-api-url="https://your-api.com/api"
+  data-api-key="your-api-key"
+  data-title="Your Company"
+  data-subtitle="Customer Support"
+  data-primary-color="#ff6b6b"
+  data-position="bottom-left"
+  data-demo="false"
+  data-auto-open="true"&gt;
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>🎛️ Method 3: JavaScript API</h3>
+      <p>Full programmatic control:</p>
+      <pre><code>&lt;script src="https://your-cdn.com/landmark-chat-widget.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  // Initialize manually
+  const chatWidget = new LandmarkChatWidget({
+    apiUrl: 'https://your-api.com/api',
+    apiKey: 'your-api-key',
+    demo: false,
+    theme: {
+      primaryColor: '#6366f1',
+      secondaryColor: '#8b5cf6'
+    },
+    branding: {
+      title: 'Your Company',
+      subtitle: 'AI Assistant'
+    },
+    position: 'bottom-right',
+    autoOpen: false,
+    onMessage: (userMsg, botMsg) => {
+      console.log('Message exchanged:', userMsg, botMsg);
+      // Send to analytics
+      gtag('event', 'chat_message');
+    },
+    onOpen: () => {
+      console.log('Chat opened');
+    },
+    onClose: () => {
+      console.log('Chat closed');
+    }
+  });
+
+  chatWidget.init();
+
+  // Control programmatically
+  // chatWidget.open();
+  // chatWidget.sendMessage('Hello!');
+  // chatWidget.close();
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>🌐 Platform-Specific Examples</h3>
+
+      <h4>WordPress (functions.php)</h4>
+      <pre><code>function add_landmark_chat() {
+    ?&gt;
+    &lt;script 
+      src="https://your-cdn.com/landmark-chat-widget.js"
+      data-title="&lt;?php bloginfo('name'); ?&gt;"
+      data-api-url="&lt;?php echo get_option('chat_api_url'); ?&gt;"
+      data-demo="false"&gt;
+    &lt;/script&gt;
+    &lt;?php
+}
+add_action('wp_footer', 'add_landmark_chat');</code></pre>
+
+      <h4>Shopify (theme.liquid)</h4>
+      <pre><code>&lt;script 
+  src="https://your-cdn.com/landmark-chat-widget.js"
+  data-title="{{ shop.name }}"
+  data-primary-color="{{ settings.accent_color }}"
+  data-demo="false"&gt;
+&lt;/script&gt;</code></pre>
+
+      <h4>HTML/Static Site</h4>
+      <pre><code>&lt;!-- Add before closing &lt;/body&gt; tag --&gt;
+&lt;script 
+  src="https://your-cdn.com/landmark-chat-widget.js"
+  data-title="My Website"
+  data-demo="true"&gt;
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>📱 React Component (for React apps)</h3>
+      <p>If you want to use it as a React component in other React apps:</p>
+      <pre><code>import { ChatWidget } from 'landmark-chat-widget/react';
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;YourContent /&gt;
+      &lt;ChatWidget 
+        apiUrl="https://your-api.com/api"
+        demo={false}
+        theme={{ primaryColor: '#6366f1' }}
+        onMessage={(user, bot) =&gt; console.log(user, bot)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>🔧 Advanced Integration</h3>
+      <p>Custom triggers and interactions:</p>
+      <pre><code>&lt;!-- Help button opens chat --&gt;
+&lt;button onclick="landmarkChatWidgetInstance.open()"&gt;
+  Need Help?
+&lt;/button&gt;
+
+&lt;!-- Product inquiry --&gt;
+&lt;button onclick="askAboutProduct('Premium Package')"&gt;
+  Ask about this product
+&lt;/button&gt;
+
+&lt;script&gt;
+function askAboutProduct(productName) {
+  landmarkChatWidgetInstance.sendMessage(
+    `I'm interested in ${productName}. Can you help?`
+  );
+  landmarkChatWidgetInstance.open();
+}
+
+// Listen to chat events
+window.addEventListener('landmark-chat-open', () => {
+  gtag('event', 'chat_opened');
+});
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="example">
+      <h3>📊 Analytics Integration</h3>
+      <pre><code>&lt;script&gt;
+const widget = new LandmarkChatWidget({
+  // ... config
+  onMessage: (userMsg, botMsg) => {
+    // Google Analytics
+    gtag('event', 'chat_message', {
+      'event_category': 'Chat',
+      'event_label': userMsg.content.substring(0, 50)
+    });
+    
+    // Facebook Pixel
+    fbq('track', 'Contact');
+    
+    // Custom analytics
+    analytics.track('Chat Message', {
+      message_length: userMsg.content.length,
+      session_id: widget.getSessionId()
+    });
+  }
+});
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <!-- THE ACTUAL WIDGET EMBEDDED HERE -->
+    <script>
+      // For demo purposes, we'll simulate the widget with the React component
+      // In reality, this would be the built landmark-chat-widget.js file
+      console.log(
+        "Chat widget would be loaded here from: https://your-cdn.com/landmark-chat-widget.js"
+      );
+
+      // Simulate the widget API
+      window.LandmarkChatWidget = class {
+        constructor(config) {
+          console.log("Widget initialized with config:", config);
+        }
+        init() {
+          console.log("Widget init called");
+        }
+        open() {
+          console.log("Widget open called");
+        }
+        close() {
+          console.log("Widget close called");
+        }
+        sendMessage(msg) {
+          console.log("Send message:", msg);
+        }
+      };
+    </script>
+
+    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000">
+      <div
+        style="
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          cursor: pointer;
+        "
+        onclick="alert('This would be your chat widget! In the real version, clicking opens the chat.')"
+      >
+        💬
+      </div>
+    </div>
+  </body>
+</html>
