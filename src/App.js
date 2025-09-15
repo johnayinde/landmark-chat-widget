@@ -9,7 +9,7 @@ function App() {
       <DemoPage />
 
       {/* Chat widget - will float over the page */}
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </div>
   );
 }

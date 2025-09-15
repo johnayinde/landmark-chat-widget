@@ -24,7 +24,7 @@
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: #34395e;
   color: white;
   position: relative;
 }
@@ -33,6 +33,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
 }
+/* #ff8300 */
 
 .chat-button svg {
   transition: transform 0.3s ease;
@@ -41,7 +42,6 @@
 .chat-button:hover svg {
   transform: scale(1.1);
 }
-
 .unread-indicator {
   position: absolute;
   top: -2px;
@@ -120,7 +120,7 @@
 
 /* Header */
 .chat-header {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: #34395e;
   color: white;
   padding: 16px;
   display: flex;
